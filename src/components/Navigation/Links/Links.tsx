@@ -3,8 +3,10 @@ import { Box, Collapse, Group, UnstyledButton } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import classes from './Links.module.css';
+import { useMediaQuery } from '@mantine/hooks';
 
 interface LinksGroupProps {
+  onClose?: () => void;
   icon?: any;
   label: string;
   initiallyOpened?: boolean;
@@ -22,18 +24,23 @@ const LinksGroup: React.FC<LinksGroupProps> = (props) => {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   // const [currentPath, setCurrentPath] = useState<string | undefined>();
+  const tablet_match = useMediaQuery('(max-width: 768px)');
+
   const ChevronIcon = IconChevronRight;
 
-  const items = (hasLinks ? links : []).map((navLink) => (
-    <Link
-      className={classes.link}
-      to={navLink.link}
-      key={navLink.label}
-      data-active={navLink.link.toLowerCase() === location.pathname || undefined}
-    >
-      {navLink.label}
-    </Link>
-  ));
+  const items = (hasLinks ? links : []).map((navLink) => {
+    console.log('ddd', navLink.link.toLowerCase(), location.pathname);
+    return (
+      <Link
+        className={classes.link}
+        to={navLink.link}
+        key={navLink.label}
+        data-active={navLink.link.toLowerCase() === location.pathname || '' || undefined}
+      >
+        {navLink.label}
+      </Link>
+    );
+  });
 
   useEffect(() => {
     const paths = location.pathname.split('/');
@@ -49,6 +56,7 @@ const LinksGroup: React.FC<LinksGroupProps> = (props) => {
         onClick={() => {
           setOpened((o) => !o);
           link && navigate(link || '#');
+          tablet_match && !hasLinks && props.onClose && props.onClose();
         }}
         className={classes.control}
         data-active={opened || undefined}

@@ -9,7 +9,7 @@ type LogoProps = {
 const Logo = ({ href, ...others }: LogoProps) => (
   <UnstyledButton className={classes.logo} component="a" href={href || '/'} {...others}>
     <Group gap="xs">
-      <Image src={logo} height={24} width={24} alt="design sparx logo" />
+      <Image src={logo} height={24} width={24} alt="Eficens logo" />
       {/* <Text fw={700}>Eficens IT</Text> */}
     </Group>
   </UnstyledButton>

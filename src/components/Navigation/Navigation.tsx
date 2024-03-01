@@ -1,8 +1,8 @@
 import React from 'react';
-import { ActionIcon, Box, Flex, Group, ScrollArea, Text } from '@mantine/core';
+import { ActionIcon, Box, Flex, Group, ScrollArea, Text, Title } from '@mantine/core';
 import { IconPower, IconX } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
-import { Logo, UserProfileButton } from '@/components';
+import { UserProfileButton } from '@/components';
 import classes from './Navigation.module.css';
 import { LinksGroup } from '@/components/Navigation/Links/Links';
 import { MOCK_DATA, MOCK_USER_PROFILE } from './MockData';
@@ -21,7 +21,7 @@ const AppNavigation: React.FC<NavigationProps> = ({ onClose }) => {
         {m.title}
       </Text>
       {m.links.map((item) => (
-        <LinksGroup {...item} key={item.label} />
+        <LinksGroup {...item} key={item.label} onClose={onClose} />
       ))}
     </Box>
   ));
@@ -31,7 +31,9 @@ const AppNavigation: React.FC<NavigationProps> = ({ onClose }) => {
       <div className={classes.header}>
         <Flex justify="space-between" align="center" gap="sm">
           <Group justify="space-between" style={{ flex: tablet_match ? 'auto' : 1 }}>
-            <Logo className={classes.logo} />
+            {/* <Logo className={classes.logo} /> */}
+
+            <Title order={3}>Review App</Title>
           </Group>
           {tablet_match && (
             <ActionIcon onClick={onClose} variant="transparent">
