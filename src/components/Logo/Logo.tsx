@@ -1,4 +1,4 @@
-import { Group, Image, Text, UnstyledButton, UnstyledButtonProps } from '@mantine/core';
+import { Group, Image, UnstyledButton, UnstyledButtonProps } from '@mantine/core';
 import classes from './Logo.module.css';
 import logo from '@/assets/images/logo.svg';
 

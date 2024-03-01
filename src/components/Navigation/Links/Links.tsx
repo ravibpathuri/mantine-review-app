@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Collapse, Group, Text, UnstyledButton } from '@mantine/core';
+import { Box, Collapse, Group, UnstyledButton } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import classes from './Links.module.css';
