@@ -8,15 +8,15 @@ WORKDIR /app
 
 # Installing dependencies
 COPY ./package.json ./
-COPY ./package-lock.json ./
-#COPY ./yarn.lock ./
-RUN npm ci
+#COPY ./package-lock.json ./
+COPY ./yarn.lock ./
+RUN yarn install
 
 # Copying all the files in our project
 COPY . .
 
 # Starting our application
-RUN npm run build 
+RUN yarn build 
 
 FROM nginx:stable-alpine
 EXPOSE 80

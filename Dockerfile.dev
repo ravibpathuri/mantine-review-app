@@ -13,12 +13,12 @@ WORKDIR /app
 
 # Installing dependencies
 COPY ./package.json ./
-COPY ./package-lock.json ./
-#COPY ./yarn.lock ./
-RUN npm install
+#COPY ./package-lock.json ./
+COPY ./yarn.lock ./
+RUN yarn install
 
 # Copy all files from current directory to working dir in image
 COPY . .
 
 # install node modules and build assets
-CMD ["npm", "dev"]
+CMD ["yarn", "dev"]
