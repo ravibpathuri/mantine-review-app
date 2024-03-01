@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  nginx-react:
+    container_name: eficens-review-app-dev
+    build:
+      dockerfile: Dockerfile.dev
+    image: eficens-review-app-dev
+    ports:
+      - 3000:3000
+    environment:
+      VITE_API_URL: https://jsonplaceholder.typicode.com/

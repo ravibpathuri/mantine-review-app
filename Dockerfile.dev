@@ -1,0 +1,23 @@
+# Multi-stage
+# 1) Node image for building frontend assets
+# 2) nginx stage to serve frontend assets
+
+# Name the node stage "builder"
+FROM node:21.5.0 AS builder
+
+# Declaring env
+ENV NODE_ENV development
+
+# Set working directory
+WORKDIR /app
+
+# Installing dependencies
+COPY ./package.json ./
+COPY ./package-lock.json ./
+RUN npm install
+
+# Copy all files from current directory to working dir in image
+COPY . .
+
+# install node modules and build assets
+CMD ["npm", "start"]
