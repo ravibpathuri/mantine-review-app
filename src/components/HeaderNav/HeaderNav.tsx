@@ -9,6 +9,7 @@ import {
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import { Logo } from '../Logo';
+import { ThemePicker } from '../ThemePicker';
 
 const ICON_SIZE = 20;
 
@@ -62,6 +63,7 @@ const HeaderNav: React.FC<HeaderNavProps> = ({
         )}
       </Group>
       <Group>
+        <ThemePicker type="collapsed" />
         <Tooltip label="Logout">
           <ActionIcon>
             <IconPower size={ICON_SIZE} />

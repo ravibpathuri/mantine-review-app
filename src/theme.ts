@@ -125,9 +125,10 @@ const danger: MantineColorsTuple = [
 
 export const theme = createTheme({
   /* Put your mantine theme override here */
-  fontFamily: 'Open Sans, sans-serif',
+  fontFamily: 'Inter, sans-serif',
+  scale: 1,
   fontFamilyMonospace: 'Monaco, Courier, monospace',
-  headings: { fontFamily: `Open Sans, ${DEFAULT_THEME.fontFamily}` },
+  headings: { fontFamily: `Inter, ${DEFAULT_THEME.fontFamily}` },
   fontSizes: { xs: rem(10), sm: rem(13), md: rem(14), lg: rem(16), xl: rem(20) },
   primaryColor: 'theme5',
   defaultRadius: 'md',

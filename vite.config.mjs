@@ -4,7 +4,10 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  server:{
+  define: {
+    global: {},
+  },
+  server: {
     watch: {
       usePolling: true,
     },

@@ -8,6 +8,7 @@ import { Welcome } from './Welcome';
 import { UserProfileButton } from './UserProfileButton';
 import { AppNavigation } from './Navigation';
 import { AppMain } from './AppMain';
+import { PageHeader } from './PageHeader';
 
 export {
   Logo,
@@ -20,4 +21,5 @@ export {
   UserProfileButton,
   AppNavigation,
   AppMain,
+  PageHeader,
 };

@@ -8,9 +8,9 @@ import {
 import { HomePage } from './pages/Home';
 import GamePage from './pages/Game/Game.page';
 import AppLayout from './layout/AppLayout';
-import GuestLayout from './layout/GuestLayout';
 import { UsersPage } from './pages/User/Users.page';
 import { UserDetailsPage } from './pages/UserDetails/UserDetails.page';
+import { LoginPage } from './pages/Authentication';
 
 const SignedIn = true;
 
@@ -26,14 +26,7 @@ const PrivateRoutes = () => {
   );
 };
 
-const LoginRoute = () =>
-  SignedIn ? (
-    <Navigate to="/" replace />
-  ) : (
-    <GuestLayout>
-      <Outlet />
-    </GuestLayout>
-  );
+const LoginRoute = () => (SignedIn ? <Navigate to="/" replace /> : <Outlet />);
 
 const router = createBrowserRouter([
   {
@@ -50,7 +43,7 @@ const router = createBrowserRouter([
     path: '/authentication',
     element: <LoginRoute />,
     children: [
-      { path: 'signin', element: <>Login page</> },
+      { path: 'signin', element: <LoginPage /> },
       {
         path: 'register',
         element: <>TODO: Register page</>,

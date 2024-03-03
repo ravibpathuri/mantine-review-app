@@ -81,3 +81,36 @@ export const isSessionValid = async (config: CognitoConfig) => {
     });
   });
 };
+
+export const changePassword = async (
+  config: CognitoConfig,
+  email: string,
+  oldPassword: string,
+  newPassword: string,
+  remember: boolean = false
+) => {
+  return await new Promise<CognitoUserSession>((resolve, reject) => {
+    const authenticationData = { Username: email, Password: oldPassword };
+    const authenticationDetails = new AuthenticationDetails(authenticationData);
+    const cognitoUser = getUser(config, email, remember);
+
+    // Start by clearing any current sessions
+    logout(config);
+    cognitoUser.authenticateUser(authenticationDetails, {
+      onSuccess: (session) => {
+        console.log('dd', session);
+        cognitoUser.changePassword(oldPassword, newPassword, (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log('Successfully changed password of the user.');
+            console.log(result);
+          }
+        });
+      },
+      onFailure: (err) => {
+        reject(err);
+      },
+    });
+  });
+};

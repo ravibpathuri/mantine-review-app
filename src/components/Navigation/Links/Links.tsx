@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, Collapse, Group, UnstyledButton } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import classes from './Links.module.css';
 import { useMediaQuery } from '@mantine/hooks';
+import classes from './Links.module.css';
 
 interface LinksGroupProps {
   onClose?: () => void;
@@ -28,19 +28,16 @@ const LinksGroup: React.FC<LinksGroupProps> = (props) => {
 
   const ChevronIcon = IconChevronRight;
 
-  const items = (hasLinks ? links : []).map((navLink) => {
-    console.log('ddd', navLink.link.toLowerCase(), location.pathname);
-    return (
-      <Link
-        className={classes.link}
-        to={navLink.link}
-        key={navLink.label}
-        data-active={navLink.link.toLowerCase() === location.pathname || '' || undefined}
-      >
-        {navLink.label}
-      </Link>
-    );
-  });
+  const items = (hasLinks ? links : []).map((navLink) => (
+    <Link
+      className={classes.link}
+      to={navLink.link}
+      key={navLink.label}
+      data-active={navLink.link.toLowerCase() === location.pathname || '' || undefined}
+    >
+      {navLink.label}
+    </Link>
+  ));
 
   useEffect(() => {
     const paths = location.pathname.split('/');

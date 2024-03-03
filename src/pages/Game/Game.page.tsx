@@ -1,7 +1,20 @@
 import React, { ChangeEvent } from 'react';
-import { Button, Input, Stack } from '@mantine/core';
+import { Anchor, Button, Container, Flex, Input } from '@mantine/core';
+import { Link } from 'react-router-dom';
+import { IconRefresh } from '@tabler/icons-react';
 import { GameHistory } from './GameHistory';
 import { GameHistoryItemType } from './types';
+import { PageHeader } from '@/components';
+import { PATH_APPS } from '@/routes';
+
+const items = [
+  { title: 'Home', href: PATH_APPS.home },
+  { title: 'Game', href: '#' },
+].map((item, index) => (
+  <Anchor component={Link} to={item.href} key={index}>
+    {item.title}
+  </Anchor>
+));
 
 const GamePage = () => {
   const [target, setTarget] = React.useState<number>();
@@ -39,20 +52,32 @@ const GamePage = () => {
   return (
     <>
       {/* <div>Target : {target}</div> */}
-      <Stack>
-        <Button className="test" onClick={handleNewGame}>
-          New Game
-        </Button>
+      <Container fluid>
+        <PageHeader
+          title="Guessing Game"
+          breadcrumbItems={items}
+          actionItems={
+            <>
+              <Button
+                leftSection={<IconRefresh size={18} />}
+                className="test"
+                onClick={handleNewGame}
+              >
+                New Game
+              </Button>
+            </>
+          }
+        />
 
-        <Stack gap={5}>
+        <Flex gap={{ base: 'sm', sm: 4 }} mt={15}>
           <Input type="number" value={aim} onChange={handleAimChange} />
 
           <Button variant="outlined" onClick={handleAim}>
             Aim
           </Button>
-        </Stack>
+        </Flex>
         <GameHistory atttempts={atttempts} />
-      </Stack>
+      </Container>
     </>
   );
 };
