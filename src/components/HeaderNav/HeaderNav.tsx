@@ -1,15 +1,7 @@
 import { ActionIcon, Burger, Group, Menu, Tooltip, useMantineColorScheme } from '@mantine/core';
-import {
-  IconCircleHalf2,
-  IconLayoutSidebarLeftCollapse,
-  IconLayoutSidebarLeftExpand,
-  IconMoonStars,
-  IconPower,
-  IconSunHigh,
-} from '@tabler/icons-react';
+import { IconCircleHalf2, IconMoonStars, IconPower, IconSunHigh } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import { Logo } from '../Logo';
-import { ThemePicker } from '../ThemePicker';
 
 const ICON_SIZE = 20;
 
@@ -20,6 +12,7 @@ type HeaderNavProps = {
   toggleMobile?: () => void;
   desktopOpened?: boolean;
   toggleDesktop?: () => void;
+  layout?: 'Exam' | 'App' | 'Guest';
 };
 
 const HeaderNav: React.FC<HeaderNavProps> = ({
@@ -27,6 +20,7 @@ const HeaderNav: React.FC<HeaderNavProps> = ({
   toggleDesktop,
   toggleMobile,
   mobileOpened,
+  layout,
 }) => {
   const { setColorScheme, colorScheme } = useMantineColorScheme();
   // const laptop_match = useMediaQuery('(max-width: 992px)');
@@ -36,13 +30,17 @@ const HeaderNav: React.FC<HeaderNavProps> = ({
   return (
     <Group justify="space-between">
       <Group gap={0}>
-        <Tooltip label="Toggle side navigation">
+        {/* <Tooltip label="Toggle side navigation">
           <ActionIcon visibleFrom="md" onClick={toggleDesktop}>
             {desktopOpened ? <IconLayoutSidebarLeftCollapse /> : <IconLayoutSidebarLeftExpand />}
           </ActionIcon>
-        </Tooltip>
-        <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="md" size="sm" />
-        {/*<Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="md" size="sm"/>*/}
+        </Tooltip> */}
+        {layout === 'App' && (
+          <>
+            <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="md" size="sm" />
+            <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="md" size="sm" />
+          </>
+        )}
         {!mobile_match && (
           <>
             <Logo />
@@ -63,7 +61,6 @@ const HeaderNav: React.FC<HeaderNavProps> = ({
         )}
       </Group>
       <Group>
-        <ThemePicker type="collapsed" />
         <Tooltip label="Logout">
           <ActionIcon>
             <IconPower size={ICON_SIZE} />

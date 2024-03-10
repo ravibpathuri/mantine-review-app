@@ -8,10 +8,7 @@ export function HomePage() {
   const { users: usersData } = useAppSelector((state) => state.home);
   const dispatch = useAppDispatch();
   const getData = () => {
-    axiosWebClient.get('/users').then((response) => {
-      console.log(response.data);
-      dispatch(setUsers(response.data));
-    });
+    axiosWebClient.get('/users').then((response) => dispatch(setUsers(response.data)));
   };
 
   const handleLoadUsers = () => getData();

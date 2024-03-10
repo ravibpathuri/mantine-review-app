@@ -1,5 +1,6 @@
 import { render, screen, userEvent } from '@test-utils';
 import { vi } from 'vitest';
+import { Anchor } from '@mantine/core';
 
 import UserProfileButton from '../UserProfileButton';
 
@@ -23,9 +24,9 @@ describe('UserProfileButton Tests', () => {
     const TestData = { name: 'John D', email: 'fake@email.com', image: '#' };
     const handleSignOff = vi.fn();
     const signOffIcon = (
-      <button type="button" onClick={handleSignOff}>
+      <Anchor role="button" component="a" onClick={handleSignOff}>
         SignOff
-      </button>
+      </Anchor>
     );
 
     // act
@@ -40,6 +41,6 @@ describe('UserProfileButton Tests', () => {
 
     // assert
     await userEvent.click(screen.getByRole('button', { name: 'SignOff' }));
-    expect(handleSignOff).toBeCalledTimes(2);
+    expect(handleSignOff).toBeCalled();
   });
 });

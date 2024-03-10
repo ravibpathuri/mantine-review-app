@@ -1,14 +1,15 @@
 import React from 'react';
 import { AppShell, Container, rem, useMantineTheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { AppMain, AppNavigation, FooterNav, HeaderNav } from '@/components';
-import classes from './AppLayout.module.css';
+import { AppMain, FooterNav, HeaderNav } from '@/components';
+import classes from './ExamLayout.module.css';
 
-interface AppLayoutProps extends React.PropsWithChildren {}
+interface ExamLayoutProps extends React.PropsWithChildren {}
 
-const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+const ExamLayout: React.FC<ExamLayoutProps> = ({ children }) => {
+  const [opened, { toggle }] = useDisclosure();
   const theme = useMantineTheme();
-  const [opened, setOpened] = React.useState(false);
+  //const [opened, setOpened] = React.useState(false);
   //const [themeOpened, { open: themeOpen, close: themeClose }] = useDisclosure(false);
   const tablet_match = useMediaQuery('(max-width: 768px)');
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -16,14 +17,9 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 
   return (
     <AppShell
-      layout="alt"
+      layout="default"
       header={{ height: 60 }}
-      footer={{ height: 60 }}
-      navbar={{
-        width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
-      }}
+      navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       padding="md"
     >
       <AppShell.Header
@@ -35,9 +31,8 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       >
         <Container fluid py="sm" px="lg">
           <HeaderNav
-            layout="App"
             opened={opened}
-            handleOpen={() => setOpened((o: boolean) => !o)}
+            handleOpen={() => toggle()}
             desktopOpened={desktopOpened}
             mobileOpened={mobileOpened}
             toggleDesktop={toggleDesktop}
@@ -45,15 +40,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           />
         </Container>
       </AppShell.Header>
-      <AppShell.Navbar>
-        <AppNavigation
-          onClose={() => {
-            setOpened(false);
-            toggleMobile();
-            toggleDesktop();
-          }}
-        />
-      </AppShell.Navbar>
+
       <AppShell.Main className={classes.main}>
         <AppMain>{children}</AppMain>
       </AppShell.Main>
@@ -66,4 +53,4 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   );
 };
 
-export default AppLayout;
+export default ExamLayout;

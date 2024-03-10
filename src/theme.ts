@@ -130,9 +130,9 @@ export const theme = createTheme({
   fontFamilyMonospace: 'Monaco, Courier, monospace',
   headings: { fontFamily: `Inter, ${DEFAULT_THEME.fontFamily}` },
   fontSizes: { xs: rem(10), sm: rem(13), md: rem(14), lg: rem(16), xl: rem(20) },
-  primaryColor: 'theme5',
+  primaryColor: 'eficens',
   defaultRadius: 'md',
-  focusRing: 'always',
+  focusRing: 'auto',
   defaultGradient: {
     from: '#d2d6ff',
     to: '#4450f1',

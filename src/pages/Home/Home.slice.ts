@@ -21,7 +21,6 @@ const homePageSlice = createSlice({
       state.users = action.payload;
     },
     clearUsers: (state) => {
-      console.log('we are here to clear users');
       state.users = [];
       state.test = 'cleard';
     },

@@ -33,7 +33,7 @@ const AppNavigation: React.FC<NavigationProps> = ({ onClose }) => {
           <Group justify="space-between" style={{ flex: tablet_match ? 'auto' : 1 }}>
             {/* <Logo className={classes.logo} /> */}
 
-            <Title order={3}>Review App</Title>
+            <Title order={3}>Test App</Title>
           </Group>
           {tablet_match && (
             <ActionIcon onClick={onClose} variant="transparent">

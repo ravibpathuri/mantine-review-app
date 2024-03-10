@@ -9,6 +9,7 @@ import { UserProfileButton } from './UserProfileButton';
 import { AppNavigation } from './Navigation';
 import { AppMain } from './AppMain';
 import { PageHeader } from './PageHeader';
+import Rbac from './Rbac';
 
 export {
   Logo,
@@ -22,4 +23,5 @@ export {
   AppNavigation,
   AppMain,
   PageHeader,
+  Rbac,
 };

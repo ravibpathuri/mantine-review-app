@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { Router } from './Router';
 import { theme } from './theme';
 import store from './redux';
-import { CognitoProvider } from './context/CognitoProvider';
+import { CognitoProvider } from '@/context';
 
 const clientID = import.meta.env.VITE_COGNITO_CLIENT_ID;
 const userPoolID = import.meta.env.VITE_COGNITO_USER_POOL_ID;
