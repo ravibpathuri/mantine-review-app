@@ -1,6 +1,6 @@
 import { render, screen, userEvent } from '@test-utils';
+import { IconPower } from '@tabler/icons-react';
 import { vi } from 'vitest';
-import { Anchor } from '@mantine/core';
 
 import UserProfileButton from '../UserProfileButton';
 
@@ -23,11 +23,7 @@ describe('UserProfileButton Tests', () => {
     // arrange
     const TestData = { name: 'John D', email: 'fake@email.com', image: '#' };
     const handleSignOff = vi.fn();
-    const signOffIcon = (
-      <Anchor role="button" component="a" onClick={handleSignOff}>
-        SignOff
-      </Anchor>
-    );
+    const signOffIcon = <IconPower data-testid="signOffIcon" onClick={handleSignOff} />;
 
     // act
     render(
@@ -40,7 +36,7 @@ describe('UserProfileButton Tests', () => {
     );
 
     // assert
-    await userEvent.click(screen.getByRole('button', { name: 'SignOff' }));
+    await userEvent.click(screen.getByTestId('signOffIcon'));
     expect(handleSignOff).toBeCalled();
   });
 });

@@ -123,21 +123,35 @@ const danger: MantineColorsTuple = [
   '#a00016',
 ];
 
+const TestAppTheme: MantineColorsTuple = [
+  '#e1faff',
+  '#ceeffe',
+  '#a1dcf8',
+  '#70c8f3',
+  '#49b8ef',
+  '#30adec',
+  '#1ca8ec',
+  '#0292d3',
+  '#0082be',
+  '#0071a8',
+];
+
 export const theme = createTheme({
   /* Put your mantine theme override here */
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: 'Public Sans, sans-serif',
   scale: 1,
   fontFamilyMonospace: 'Monaco, Courier, monospace',
-  headings: { fontFamily: `Inter, ${DEFAULT_THEME.fontFamily}` },
+  headings: { fontFamily: `Public Sans, ${DEFAULT_THEME.fontFamily}` },
   fontSizes: { xs: rem(10), sm: rem(13), md: rem(14), lg: rem(16), xl: rem(20) },
-  primaryColor: 'eficens',
+  primaryColor: 'testApp',
   defaultRadius: 'md',
   focusRing: 'auto',
   defaultGradient: {
-    from: '#d2d6ff',
-    to: '#4450f1',
+    from: '#797EF6',
+    to: '#1AA7EC',
     deg: 270,
   },
+
   components: {
     ActionIcon: ActionIcon.extend({
       defaultProps: {
@@ -163,5 +177,6 @@ export const theme = createTheme({
     information,
     warning,
     danger,
+    testApp: TestAppTheme,
   },
 });
