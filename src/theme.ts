@@ -129,7 +129,7 @@ export const theme = createTheme({
   fontFamilyMonospace: 'Monaco, Courier, monospace',
   headings: { fontFamily: `Open Sans, ${DEFAULT_THEME.fontFamily}` },
   fontSizes: { xs: rem(10), sm: rem(13), md: rem(14), lg: rem(16), xl: rem(20) },
-  primaryColor: 'theme5',
+  primaryColor: 'alibaba',
   defaultRadius: 'md',
   focusRing: 'always',
   defaultGradient: {
