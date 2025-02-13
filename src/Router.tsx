@@ -11,6 +11,7 @@ import AppLayout from './layout/AppLayout';
 import GuestLayout from './layout/GuestLayout';
 import { UsersPage } from './pages/User/Users.page';
 import { UserDetailsPage } from './pages/UserDetails/UserDetails.page';
+import Profile from './pages/Profile/Profile';
 
 const SignedIn = true;
 
@@ -26,14 +27,7 @@ const PrivateRoutes = () => {
   );
 };
 
-const LoginRoute = () =>
-  SignedIn ? (
-    <Navigate to="/" replace />
-  ) : (
-    <GuestLayout>
-      <Outlet />
-    </GuestLayout>
-  );
+const LoginRoute = () => (SignedIn ? <Navigate to="/" replace /> : <GuestLayout />);
 
 const router = createBrowserRouter([
   {
@@ -44,6 +38,7 @@ const router = createBrowserRouter([
       { path: 'game', element: <GamePage /> },
       { path: 'users', element: <UsersPage /> },
       { path: 'user/:id', element: <UserDetailsPage /> },
+      { path: 'profile', element: <Profile /> },
     ],
   },
   {

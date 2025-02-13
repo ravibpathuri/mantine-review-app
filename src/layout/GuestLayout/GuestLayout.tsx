@@ -2,6 +2,7 @@ import React from 'react';
 import { AppShell, Box, useMantineTheme } from '@mantine/core';
 import { useHeadroom } from '@mantine/hooks';
 import { FooterNav, GuestHeaderNav } from '@/components';
+import { Outlet } from 'react-router-dom';
 
 interface GuestLayoutProps extends React.PropsWithChildren {}
 
@@ -16,7 +17,9 @@ const GuestLayout: React.FC<GuestLayoutProps> = ({ children }) => {
           <GuestHeaderNav />
         </AppShell.Header>
         <AppShell.Main>
-          <Box style={{ backgroundColor: theme.colors.gray[0] }}>{children}</Box>
+          <Box style={{ backgroundColor: theme.colors.gray[0] }}>
+            <Outlet />
+          </Box>
           <FooterNav />
         </AppShell.Main>
       </AppShell>
